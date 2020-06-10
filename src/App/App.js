@@ -67,7 +67,7 @@ class App extends React.Component {
         <React.Fragment>
           <MyNavbar />
           <div className="container">
-            <div class="row">
+            <div className="row">
               <Switch>
                 <PrivateRoute path='/home' component={Home} authed={authed} />
                 <PrivateRoute path='/new' component={NewJunk} authed={authed} />
