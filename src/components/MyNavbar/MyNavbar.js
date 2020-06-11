@@ -8,13 +8,17 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
-
+import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import './MyNavbar.scss';
 
 class MyNavbar extends React.Component {
+  static propTypes = {
+    authed: PropTypes.bool.isRequired,
+  }
+
   state = {
     isOpen: false,
   }
@@ -28,21 +32,31 @@ class MyNavbar extends React.Component {
     this.setState({ isOpen: !this.state.isOpen });
   }
 
+
   render() {
     const { isOpen } = this.state;
-    return (
-  <div className="MyNavbar">
-    {/* <h4>this is the navbar</h4>
-    <button className="btn btn-warning" onClick={this.logMeOut}>Logout</button> */}
-        <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">React Hoarder</NavbarBrand>
-        <NavbarToggler onClick={this.toggle} />
-        <Collapse isOpen={isOpen} navbar>
+
+    const buildNavbar = () => {
+      const { authed } = this.props;
+      if (authed) {
+        return (
           <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink href="/components/">Components</NavLink>
-            </NavItem>
+          <NavItem>
+            <NavLink href="/components/">Components</NavLink>
+          </NavItem>
           </Nav>
+        );
+      }
+      return <Nav className="ml-auto" navbar></Nav>;
+    };
+    return (
+<div className="MyNavbar">
+  {/* <button className="btn btn-warning" onClick={this.logMeOut}>Logout</button> */}
+      <Navbar color="light" light expand="md">
+      <NavbarBrand href="/">React Hoarder</NavbarBrand>
+      <NavbarToggler onClick={this.toggle} />
+      <Collapse isOpen={isOpen} navbar>
+      {buildNavbar()}
 
         </Collapse>
       </Navbar>
