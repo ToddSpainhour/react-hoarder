@@ -9,7 +9,6 @@ class Home extends React.Component {
     e.preventDefault();
     const junkId = 'junk1';
     this.props.history.push(`/edit/${junkId}`);
-
   }
 
   render() {
