@@ -21,4 +21,6 @@ const getJunkByUid = (uid) => new Promise((resolve, reject) => {
 
 const getSingleJunk = (junkId) => axios.get(`${baseUrl}/listOfItems/${junkId}.json`);
 
-export default { getJunkByUid, getSingleJunk };
+const postJunk = (newJunk) => axios.post(`${baseUrl}/listOfItems/.json`, newJunk);
+
+export default { getJunkByUid, getSingleJunk, postJunk };

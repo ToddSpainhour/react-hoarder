@@ -1,5 +1,8 @@
 import React from 'react';
 
+import authData from '../../../helpers/data/authData';
+import junkData from '../../../helpers/data/junkData';
+
 import './NewJunk.scss';
 
 class NewJunk extends React.Component {
@@ -22,6 +25,25 @@ class NewJunk extends React.Component {
   imageChange = (e) => {
     e.preventDefault();
     this.setState({ itemImage: e.target.value });
+  }
+
+  saveJunk = (e) => {
+    e.preventDefault();
+    const {
+      itemDescription,
+      itemImage,
+      itemName,
+    } = this.state;
+    const newJunk = {
+      itemDescription,
+      itemImage,
+      itemName,
+      uid: authData.getUid(),
+    };
+
+    junkData.postJunk(newJunk)
+      .then(() => this.props.history.push('/home'))
+      .catch((err) => console.error('cannot save new junk', err));
   }
 
   render() {
@@ -68,7 +90,7 @@ class NewJunk extends React.Component {
                       />
                   </div>
 
-                <button type="submit" className="btn btn-primary">Add More Junk!</button>
+                <button type="submit" className="btn btn-primary" onClick={this.saveJunk}>Add More Junk!</button>
               </form>
       </div>
     );
