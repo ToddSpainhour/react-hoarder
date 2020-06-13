@@ -4,9 +4,6 @@ import firebaseConfig from '../apiKeys.json';
 const baseUrl = firebaseConfig.firebaseKeys.databaseURL;
 
 const getJunkByUid = (uid) => new Promise((resolve, reject) => {
-  console.error('does this even run?');
-  console.error('your baseUrl is ', baseUrl);
-  // axios.get(`${baseUrl}/listOfItems.json?orderBy="uid"&equalTo="${uid}"`)
   axios.get(`${baseUrl}/listOfItems.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       const fbJunk = response.data;
