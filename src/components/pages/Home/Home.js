@@ -31,7 +31,7 @@ class Home extends React.Component {
   render() {
     const { junkItems } = this.state;
     const buildJunkCards = junkItems.map((junk) => (
-      <JunkCard junk={junk}/>
+      <JunkCard junk={junk} key={junk.id}/>
     ));
     return (
       <div className="Home">
