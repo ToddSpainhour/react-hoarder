@@ -11,12 +11,12 @@ import {
 
 import './App.scss';
 
-import Auth from '../components/Auth/Auth';
-import MyNavbar from '../components/MyNavbar/MyNavbar';
-import Home from '../components/Home/Home';
-import NewJunk from '../components/NewJunk/NewJunk';
-import EditJunk from '../components/EditJunk/EditJunk';
-import SingleJunk from '../components/SingleJunk/SingleJunk';
+import Auth from '../components/pages/Auth/Auth';
+import MyNavbar from '../components/shared/MyNavbar/MyNavbar';
+import Home from '../components/pages/Home/Home';
+import NewJunk from '../components/pages/NewJunk/NewJunk';
+import EditJunk from '../components/pages/EditJunk/EditJunk';
+import SingleJunk from '../components/pages/SingleJunk/SingleJunk';
 
 
 import fbConnection from '../helpers/data/connection';
