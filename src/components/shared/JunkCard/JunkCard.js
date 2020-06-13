@@ -20,8 +20,8 @@ class JunkCard extends React.Component {
             <div className="card-body">
               {/* <h5 className="card-title">{junk.itemName}</h5>
                 <p className="card-text">{junk.itemDescription}</p> */}
-                <Link className="btn btn-info" to={singleLink}><i class="far fa-eye"></i></Link>
-                <Link className="btn btn-warning" to={editLink}><i class="far fa-edit"></i></Link>
+                <Link className="btn btn-info" to={singleLink}><i className="far fa-eye"></i></Link>
+                <Link className="btn btn-warning" to={editLink}><i className="far fa-edit"></i></Link>
             </div>
         </div>
       </div>

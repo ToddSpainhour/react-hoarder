@@ -7,7 +7,6 @@ const getJunkByUid = (uid) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/listOfItems.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       const fbJunk = response.data;
-      console.error('your response is...', fbJunk);
       const allJunk = [];
       if (fbJunk) {
         Object.keys(fbJunk).forEach((fbId) => {
@@ -20,4 +19,6 @@ const getJunkByUid = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getJunkByUid };
+const getSingleJunk = (junkId) => axios.get(`${baseUrl}/listOfItems/${junkId}.json`);
+
+export default { getJunkByUid, getSingleJunk };
