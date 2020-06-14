@@ -11,6 +11,7 @@ class Home extends React.Component {
     junkItems: [],
   }
 
+
   getJunk = () => {
     const uid = authData.getUid();
     junkData.getJunkByUid(uid)
@@ -18,9 +19,11 @@ class Home extends React.Component {
       .catch((err) => console.error('unable to get junk Items', err));
   }
 
+
   componentDidMount() {
     this.getJunk();
   }
+
 
   editEvent = (e) => {
     e.preventDefault();
@@ -28,10 +31,18 @@ class Home extends React.Component {
     this.props.history.push(`/edit/${junkId}`);
   }
 
+
+  removeJunk = (junkId) => {
+    junkData.deleteJunk(junkId)
+      .then(() => this.getJunk())
+      .catch((err) => console.error('cannot delete junk', err));
+  }
+
+
   render() {
     const { junkItems } = this.state;
     const buildJunkCards = junkItems.map((junk) => (
-      <JunkCard junk={junk} key={junk.id}/>
+      <JunkCard junk={junk} key={junk.id} removeJunk={this.removeJunk}/>
     ));
     return (
       <div className="Home">

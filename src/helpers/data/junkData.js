@@ -23,4 +23,11 @@ const getSingleJunk = (junkId) => axios.get(`${baseUrl}/listOfItems/${junkId}.js
 
 const postJunk = (newJunk) => axios.post(`${baseUrl}/listOfItems/.json`, newJunk);
 
-export default { getJunkByUid, getSingleJunk, postJunk };
+const deleteJunk = (junkId) => axios.delete(`${baseUrl}/listOfItems/${junkId}.json`);
+
+export default {
+  getJunkByUid,
+  getSingleJunk,
+  postJunk,
+  deleteJunk,
+};
