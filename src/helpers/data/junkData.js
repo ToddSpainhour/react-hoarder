@@ -25,9 +25,12 @@ const postJunk = (newJunk) => axios.post(`${baseUrl}/listOfItems/.json`, newJunk
 
 const deleteJunk = (junkId) => axios.delete(`${baseUrl}/listOfItems/${junkId}.json`);
 
+const putJunk = (junkId, updatedJunk) => axios.put(`${baseUrl}/listOfItems/${junkId}.json`, updatedJunk);
+
 export default {
   getJunkByUid,
   getSingleJunk,
   postJunk,
   deleteJunk,
+  putJunk,
 };

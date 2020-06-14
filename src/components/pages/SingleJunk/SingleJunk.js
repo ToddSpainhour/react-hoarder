@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import junkData from '../../../helpers/data/junkData';
 
 import './SingleJunk.scss';
@@ -24,12 +26,14 @@ removeJunk = () => {
 
 render() {
   const { junk } = this.state;
+  const { junkId } = this.props.match.params;
+  const editLink = `/edit/${junkId}`;
   return (
-    <div className="SingleJunk">
-      <h4>SingleJunk component</h4>
+    <div className="SingleJunk col-12">
       <img className="card-img-top" src={junk.itemImage} alt={junk.itemName}/>
       <h3>{junk.itemName}</h3>
       <p>{junk.itemDescription}</p>
+      <Link className="btn btn-warning" to={editLink}><i className="far fa-edit"></i></Link>
       <button className="btn btn-danger" onClick={this.removeJunk}><i class="fas fa-minus-square"></i></button>
     </div>
   );
